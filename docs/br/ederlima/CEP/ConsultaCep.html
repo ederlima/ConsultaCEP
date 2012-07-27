@@ -1,0 +1,435 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="ConsultaCep,br.ederlima.CEP.ConsultaCep,authMethod,key,responseMethod,serviceURL,addEventListener,buscarCep,buscarLocal,removeEventListener" name="keywords">
+<title>br.ederlima.CEP.ConsultaCep</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'ConsultaCep - API Documentation';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Teste</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?br/ederlima/CEP/ConsultaCep.html&amp;br/ederlima/CEP/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;ConsultaCep</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class ConsultaCep"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">br.ederlima.CEP</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class ConsultaCep</td>
+</tr>
+</table>
+<p></p>
+  <strong>Consulta CEP </strong><br />
+  A Classe <strong>ConsultaCep</strong> permite ao usuário fazer consultas para obter CEP e     Endereço de Logradouros de todo o Brasil utilizando o Webservice <a href="http://www.buscarcep.com.br" target="_blank" title="Buscar CEP">http://www.buscarcep.com.br</a>. <br />
+  Esta Classe é distribuída gratuitamente, como colaboração com a comunidade e com o próprio serviço, tal como     está, sem garantias contra erros ou mal funcionamento. <br />
+  <br /><strong>Para fazer download, vá até <a href="http://www.ederlima.com.br/arquivos/flash/ConsultaCep/ConsultaCep.rar" target="_blank" title="Fazer download da API">http://www.ederlima.com.br/arquivos/flash/ConsultaCep/ConsultaCep.rar</a></strong>
+  <br /><br />
+  <h3>Como utilizar:</h3>
+  <ul>
+    <li> <strong>Informando o CEP e retornando a informação completa</strong><br />
+   <br />
+   <blockquote><code>import br.ederlima.CEP.ConsultaCep;<br />
+   import br.ederlima.CEP.events.ConsultaCepEvent;<br />
+   import br.ederlima.CEP.data.LocalItem;<br />
+   var consulta:ConsultaCep = new ConsultaCep();<br />
+   consulta.addEventListener(ConsultaCepEvent.RESPONSE, responseHandler);<br />
+   consulta.addEventListener(ConsultaCepEvent.ERROR, errorHandler);<br />
+   consulta.buscarLocal(&quot;79103600&quot;);<br />
+   function responseHandler(event:ConsultaCepEvent):void<br />
+   {<br />
+   for each(var item:LocalItem in event.data.response)<br />
+   {<br />
+   trace(&quot;CEP: &quot; + item.cep + &quot; Logradouro: &quot; + item.logradouro + &quot; Bairro: &quot; + item.bairro + &quot; Cidade: &quot; + item.cidade);<br />
+   }<br />
+   } <br />
+   function errorHandler(event:ConsultaCepEvent):void<br />
+   {<br />
+   trace(event.data.message); <br />
+   }</code></blockquote><br /><br />
+    </li>
+    <li><strong>Informando o Endereço e retornando a informação completa</strong><br />
+   <br />
+   <blockquote><code>import br.ederlima.CEP.ConsultaCep;<br />
+   import br.ederlima.CEP.events.ConsultaCepEvent;<br />
+   import br.ederlima.CEP.data.LocalItem; <br />
+   var consulta:ConsultaCep = new ConsultaCep();<br />
+   consulta.addEventListener(ConsultaCepEvent.RESPONSE, responseHandler);<br />
+   consulta.addEventListener(ConsultaCepEvent.ERROR, errorHandler);<br />
+   consulta.buscarCep(&quot;Afrânio Fialho&quot;, &quot;Campo Grande&quot;);<br />
+   function responseHandler(event:ConsultaCepEvent):void<br />
+   {<br />
+   for each(var item:LocalItem in event.data.response)<br />
+   {<br />
+   trace(&quot;CEP: &quot; + item.cep + &quot; Logradouro: &quot; + item.logradouro + &quot; Bairro: &quot; + item.bairro + &quot; Cidade: &quot; + item.cidade);<br />
+   }<br />
+   } <br />
+   function errorHandler(event:ConsultaCepEvent):void<br />
+   {<br />
+   trace(event.data.message); <br />
+   }</code></blockquote></li>
+  </ul>
+  <h3>Dados</h3>
+  <p>São dois métodos diferentes de consulta, porém o resultado é sempre o mesmo, trazendo a informação completa do Endereço ou Cep pesquisado, os dados são retornados em um objeto LocalItem, com as seguintes propriedades:</p>
+  <ul>
+    <li><strong>cep</strong>: Cep do Local</li>
+    <li> <strong>uf</strong>: Estado</li>
+    <li><strong>cidade</strong>: Cidade</li>
+    <li> <strong>bairro</strong>: Bairro</li>
+    <li><strong>tipologradouro</strong>: Tipo de Logradouro (ex: Rua, Avenida)</li>
+    <li><strong>logradouro</strong>: Nome do Logradouro</li>
+    <li> <strong>resultado</strong>: Valor do resultado</li>
+    <li> <strong>mensagem</strong>: Mensagem do sistema para cada item</li>
+    <li> <strong>apicalls</strong>: Chamadas de API restantes</li>
+    <li> <strong>ufibge</strong>: Código do Estado no IBGE</li>
+    <li> <strong>municipioibge</strong>: Código do Município no IBGE</li>
+    <li> <strong>verificadoribge</strong>: Código verificador do IBGE</li>
+  </ul>
+  <h3>Fazendo Requisições Autenticadas</h3>
+  <p>O Webservice do <strong>BuscarCep.com.br</strong> permite por padrão que um mesmo IP faça no máximo 5 requisições por minuto para os servidores do serviço, isso é uma forma de garantir o bom funcionamento.<br />
+  </p>
+  <p>Para fazer mais solicitações por minuto é necessário cadastrar-se no <a href="http://www.buscarcep.com.br" title="Cadastre-se" target="_blank">BuscarCep.com.br</a> e conseguir sua chave única. A chave única é um código criptografado que identifica seu cadastro e permite a você fazer até 20 requisções por minuto, por IP. Uma vez cadastrado é possível utilizar a api com essa forma de autenticação.</p>
+  <h3>Utilizando a API Key para fazer consultas</h3>
+  <p>A Classe é preparada para isso e usar autenticação é muito simples, você só precisa selecionar valores para duas propriedades da Classe <strong>ConsultaCep</strong>, são elas:</p>
+  <ul>
+    <li><strong>authMethod</strong>: Método de autorização, você escolhe entre: &quot;Assinado&quot; <strong>AuthMethod.SIGNED</strong> ou &quot;Não-assinado&quot; <strong>AuthMethod.UNSIGNED</strong></li>
+    <li><strong>key</strong>: A sua chave única, recebida no seu cadastro, em formato <strong>String</strong>, ex: &quot;983u48d8/x7a7f4dsd/23.&quot;</li>
+  </ul>
+  <p><strong>Dessa forma, para consultar utilizando a sua API Key:</strong></p>
+  <blockquote><p><code>
+  import br.ederlima.CEP.methods.AuthMethod; <br />
+  consulta.authMethod = AuthMethod.SIGNED;<br />
+    consulta.key = &quot;suaapkeycadastradaeunica&quot;;</code>
+  </p></blockquote>
+  <h3>Métodos de Resposta</h3>
+  <p>Também é possível alterar o método de resposta da Classe ConsultaCep, uma vez que o Webservice oferece duas formas de se conectar e trocar dados:</p>
+  <ul>
+    <li>XML</li>
+    <li>String (Tratada na Classe como Texto)</li>
+  </ul>
+  <p>Para alterar o método de resposta basta configurar a propriedade <strong>responseMethod</strong> do seu objecto ConsultaCep, dessa forma:</p>
+  <blockquote><p><code>
+  import br.ederlima.CEP.methods.ResponseMethod;<br />
+  consulta.responseMethod = ResponseMethod.TEXT_METHOD;</code> //para Método String</p></blockquote>
+  <p>ou</p>
+  <blockquote><p><code>consulta.responseMethod = ResponseMethod.XML_METHOD;</code> //para Método XML</p></blockquote>
+  <p>A Classe é pré-configurada para rodar sem autenticação e através do método XML, porém você pode configurar o funcionamento dela da forma que precisar.</p>
+  <h3>Dados do Autor</h3>
+  <p>Eder Lima - Webdesigner e Flash Developer<br />
+    http://www.ederlima.com.br</p>
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#authMethod">authMethod</a> : String<div class="summaryTableDescription">
+   Método de autorização
+   </div>
+</td><td class="summaryTableOwnerCol">ConsultaCep</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#key">key</a> : String<div class="summaryTableDescription">
+   Chave para utilização do Serviço
+   </div>
+</td><td class="summaryTableOwnerCol">ConsultaCep</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#responseMethod">responseMethod</a> : String<div class="summaryTableDescription">
+   Método de resposta.</div>
+</td><td class="summaryTableOwnerCol">ConsultaCep</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#serviceURL">serviceURL</a> : String<div class="summaryTableDescription">
+   URL do serviço, padrão "http://www.buscarcep.com.br"
+   </div>
+</td><td class="summaryTableOwnerCol">ConsultaCep</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#ConsultaCep()">ConsultaCep</a>()</div>
+<div class="summaryTableDescription">
+   Construtor da Classe ConsultaCep
+   </div>
+</td><td class="summaryTableOwnerCol">ConsultaCep</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addEventListener()">addEventListener</a>(type:String, listener:Function):void</div>
+<div class="summaryTableDescription">
+   Adiciona um evento
+   </div>
+</td><td class="summaryTableOwnerCol">ConsultaCep</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#buscarCep()">buscarCep</a>(Logradouro:String, Cidade:String, Bairro:String = ""):void</div>
+<div class="summaryTableDescription">
+   Encontra o CEP pesquisando por nomes de Rua, Cidade e Bairro
+   </div>
+</td><td class="summaryTableOwnerCol">ConsultaCep</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#buscarLocal()">buscarLocal</a>(CEP:String):void</div>
+<div class="summaryTableDescription">
+   Encontra o endereço pesquisando por CEP
+   </div>
+</td><td class="summaryTableOwnerCol">ConsultaCep</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeEventListener()">removeEventListener</a>(type:String, listener:Function):void</div>
+<div class="summaryTableDescription">
+   Remove um evento
+   </div>
+</td><td class="summaryTableOwnerCol">ConsultaCep</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="authMethod"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">authMethod</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>authMethod:String</code>&nbsp;&nbsp;[read-write]<p>
+   Método de autorização
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get authMethod():String</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set authMethod(value:String):void</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="methods/AuthMethod.html" target="">br.ederlima.CEP.methods.AuthMethod</a>
+</div>
+</div>
+<a name="key"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">key</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>key:String</code>&nbsp;&nbsp;[read-write]<p>
+   Chave para utilização do Serviço
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get key():String</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set key(value:String):void</code>
+<br>
+</div>
+<a name="responseMethod"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">responseMethod</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>responseMethod:String</code>&nbsp;&nbsp;[read-write]<p>
+   Método de resposta. Padrão: ResponseMethod.XML_METHOD
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get responseMethod():String</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set responseMethod(value:String):void</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="methods/ResponseMethod.html" target="">br.ederlima.CEP.methods.ResponseMethod</a>
+<br>
+<a href="core/XmlConnector.html" target="">br.ederlima.CEP.core.XmlConnector</a>
+<br>
+<a href="core/TextConnector.html" target="">br.ederlima.CEP.core.TextConnector</a>
+</div>
+</div>
+<a name="serviceURL"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">serviceURL</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>serviceURL:String</code>&nbsp;&nbsp;[read-write]<p>
+   URL do serviço, padrão "http://www.buscarcep.com.br"
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get serviceURL():String</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set serviceURL(value:String):void</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="ConsultaCep()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ConsultaCep</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function ConsultaCep()</code><p>
+   Construtor da Classe ConsultaCep
+   </p></div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="addEventListener()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addEventListener</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addEventListener(type:String, listener:Function):void</code><p>
+   Adiciona um evento
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:String</code> &mdash; Evento do tipo ConsultaCepEvent
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">listener</span>:Function</code> &mdash; Função disparada com o Evento
+   </td>
+</tr>
+</table>
+</div>
+<a name="buscarCep()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">buscarCep</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function buscarCep(Logradouro:String, Cidade:String, Bairro:String = ""):void</code><p>
+   Encontra o CEP pesquisando por nomes de Rua, Cidade e Bairro
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">Logradouro</span>:String</code> &mdash; Rua
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">Cidade</span>:String</code> &mdash; Cidade
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">Bairro</span>:String</code> (default = "<code></code>")<code></code> &mdash; Bairro
+   </td>
+</tr>
+</table>
+</div>
+<a name="buscarLocal()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">buscarLocal</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function buscarLocal(CEP:String):void</code><p>
+   Encontra o endereço pesquisando por CEP
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">CEP</span>:String</code> &mdash; CEP
+   </td>
+</tr>
+</table>
+</div>
+<a name="removeEventListener()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeEventListener</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeEventListener(type:String, listener:Function):void</code><p>
+   Remove um evento
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:String</code> &mdash; Evento do tipo ConsultaCepEvent
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">listener</span>:Function</code> &mdash; Função para remover o evento
+   </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">Teste - Rodap&eacute;</center>
+</div>
+</body>
+</html>
+<!--Teste - Rodapé-->
